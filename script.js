@@ -813,7 +813,7 @@ function generateRandomDOGEEmail(department) {
   if (department === "Custom Message") {
     emailBody = `${greeting}, 
 
-[Your message here]
+Your message here! Be creative!
 
 ${closing},`;
   } else {
@@ -830,11 +830,18 @@ ${closing},`;
 
   window.location.href = emailLink;
 } // end of func
+async function emailCount(buttonID) {
+  const url = `https://doge-tracking.gz4c.org/?button=${buttonID}`;
 
-// event listener for random email 
+  const resposne = fetch(url)
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+}
+
+// event listener for random email
 // Add event listener to the buttons' parent container
 
-// event listner for corporate handouts button 
+// event listner for corporate handouts button
 document.querySelector(".buttons").addEventListener("click", function (event) {
   const button = event.target;
   if (button.classList.contains("send-email-button")) {
@@ -845,6 +852,6 @@ document.querySelector(".buttons").addEventListener("click", function (event) {
       generateRandomDOGEEmail(department);
     }
   }
+  emailCount(button.id);
 });
-
 
