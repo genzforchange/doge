@@ -170,6 +170,39 @@ var teens = [
   "eighteen",
   "nineteen",
 ];
+var emailSubjects = [
+  "Inquiry Regarding Corporate Subsidies in Recent Budget",
+  "Request for Transparency on Government Corporate Handouts",
+  "Questioning the Necessity of Corporate Tax Breaks",
+  "Seeking Clarification on Subsidies for Corporations",
+  "Concern Over Excessive Handouts to Private Companies",
+  "Request for Information: Corporate Incentives in Government Policy",
+  "Inquiry About Accountability in Corporate Subsidy Programs",
+  "Alert: Concerns About Misuse of Funds in Corporate Handouts",
+  "Questioning the Justification for Corporate Bailouts",
+  "Seeking Details on Recent Corporate Financial Assistance",
+  "Request for Review: Public Funding Allocated to Corporations",
+  "Insight Needed: Corporate Handouts and Their Economic Impact",
+  "Challenging the Need for Taxpayer-Funded Corporate Subsidies",
+  "Follow-Up on Large-Scale Corporate Incentives",
+  "Call for Transparency: Government Deals with Private Sector",
+  "Request for Explanation: Corporate Handouts in Public Records",
+  "Inquiry About Criteria for Awarding Corporate Subsidies",
+  "Highlighting Concerns Over Favoritism in Corporate Support",
+  "Seeking Audit of Public Funds Directed to Private Companies",
+  "Concern Over Unchecked Corporate Tax Breaks",
+  "Request for Analysis of Economic Impact of Corporate Handouts",
+  "Alert: Mismanagement of Corporate Subsidy Allocations",
+  "Request for Accountability on Corporate Welfare Policies",
+  "Transparency Needed: Rationale for Large Corporate Payouts",
+  "Inquiry on Oversight of Corporate Grants and Subsidies",
+  "Concerns About Public Cost of Corporate Financial Support",
+  "Request for Justification: Taxpayer Money Supporting Corporations",
+  "Follow-Up: Details on Recent Corporate Bailout Measures",
+  "Investigation Request: Questionable Corporate Incentive Policies",
+  "Request for Breakdown of Corporate Subsidy Expenditures",
+  "Concern Over Corporate Tax Loopholes Funded by Public Money",
+];
 
 function rand(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -358,30 +391,33 @@ window.writePppMail = function () {
       //     # hey doge can you let me know why [X DOLLARS] of hard-earned taxpayer money went to [X COMPANY] just so the money could go to [X PURPOSE]?
       // # the government wasn’t very efficient when they let [X COMPANY] get a [X DOLLAR] ppp loan AND get it forgiven when they just used the money to [X PURPOSE]. you should investigate that!
       var letters = [
+        // option 1:
         `${rand(are)} ${rand(lmk)} why ${varyRate(forgivenAmt)} of ${rand(
           earned
         )} ${rand(tax)} ${rand(went)} ${companyName} ${rand(
           so_that
         )} ${purpose}`,
+        // option 2 GETS CUT OFF
         `The government ${rand(wasnt)} ${rand(very)} efficient ${rand(
-          when_you
-        )} let ${companyName} get a ${varyRate(forgivenAmt)} ${rand(
-          ppp
-        )} loan ${rand(which)} forgiven, ${rand(so_that)} ${purpose}`,
+          when_you)} let ${companyName} get a ${varyRate(forgivenAmt)} ${rand(ppp)} loan ${rand(which)} forgiven, ${rand(so_that)} ${purpose}`,
       ];
       // console.log(rand(letters));
       var emailBody = rand(letters);
-      var emailSubject = "Inquiry about Corporate Handouts";
+      var emailSubject = rand(emailSubjects);
       var recipientEmail = "DOGE@mail.house.gov";
 
       // Encode the subject and body to ensure special characters are handled correctly
-      var mailtoLink =
-        "mailto:" +
-        recipientEmail +
-        "?subject=" +
-        encodeURIComponent(emailSubject) +
-        "&body=" +
-        encodeURIComponent(emailBody);
+      // var mailtoLink =
+      //   "mailto:" +
+      //   recipientEmail +
+      //   "?subject=" +
+      //   encodeURIComponent(emailSubject) +
+      //   "&body=" +
+      //   encodeURIComponent(emailBody);
+
+      const encodedBody = encodeURIComponent(emailBody);
+      const encodedSubject = encodeURIComponent(emailSubject);
+      const mailtoLink = `mailto:DOGE@mail.house.gov?subject=${encodedSubject}&body=${encodedBody}`;
 
       // Open the user's default email client with the pre-filled subject and body
       window.location.href = mailtoLink;
