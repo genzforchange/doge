@@ -392,14 +392,9 @@ window.writePppMail = function () {
       // # the government wasn’t very efficient when they let [X COMPANY] get a [X DOLLAR] ppp loan AND get it forgiven when they just used the money to [X PURPOSE]. you should investigate that!
       var letters = [
         // option 1:
-        `${rand(are)} ${rand(lmk)} why ${varyRate(forgivenAmt)} of ${rand(
-          earned
-        )} ${rand(tax)} ${rand(went)} ${companyName} ${rand(
-          so_that
-        )} ${purpose}`,
+        `${rand(are)} ${rand(lmk)} why ${varyRate(forgivenAmt)} of ${rand(earned)} ${rand(tax)} ${rand(went)} ${companyName} ${rand(so_that)} ${purpose}`,
         // option 2 GETS CUT OFF
-        `The government ${rand(wasnt)} ${rand(very)} efficient ${rand(
-          when_you)} let ${companyName} get a ${varyRate(forgivenAmt)} ${rand(ppp)} loan ${rand(which)} forgiven, ${rand(so_that)} ${purpose}`,
+        `The government ${rand(wasnt)} ${rand(very)} efficient ${rand(when_you)} let ${companyName} get a ${varyRate(forgivenAmt)} ${rand(ppp)} loan ${rand(which)} forgiven ${rand(so_that)} ${purpose}`
       ];
       // console.log(rand(letters));
       var emailBody = rand(letters);
@@ -417,7 +412,7 @@ window.writePppMail = function () {
 
       const encodedBody = encodeURIComponent(emailBody);
       const encodedSubject = encodeURIComponent(emailSubject);
-      const mailtoLink = `mailto:DOGE@mail.house.gov?subject=${encodedSubject}&body=${encodedBody}`;
+      const mailtoLink = `mailto:recipientEmail?subject=${encodedSubject}&body=${encodedBody}`;
 
       // Open the user's default email client with the pre-filled subject and body
       window.location.href = mailtoLink;

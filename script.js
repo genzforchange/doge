@@ -22,7 +22,7 @@ var subjectLinesSyn = [
   "Reporting Inefficiencies in Government Operations",
   "Confidential Tip: Potential Misuse of Public Funds",
   "Alert: Government Program Showing Signs of Waste",
-  "Anonymous Report: Inefficient Practices in Federal Agency",
+  "Inefficient Practices in Federal Agency",
   "Request for Action: Observations of Excessive Spending",
   "Tipline Submission: Questionable Expenditures by Government Department",
   "Concern Over Wasted Resources in Public Initiative",
@@ -30,7 +30,7 @@ var subjectLinesSyn = [
   "Insight on Costly Inefficiencies Across Departments",
   "Request for Investigation: Possible Resource Mismanagement",
   "Tip: Unnecessary Spending Identified in Government Activities",
-  "Anonymous Report: Excessive Costs in Public Sector Project",
+  "Excessive Costs in Public Sector Project",
   "Highlighting Inefficient Use of Taxpayer Dollars",
   "Concern Over Redundant Processes in Government Operations",
   "Alert: Misallocation of Funds in Department Initiative",
@@ -39,20 +39,20 @@ var subjectLinesSyn = [
   "Spotting Waste: Request for Immediate Review",
   "Concern About Overspending Across Government Departments",
   "Reporting Ineffective Use of Government Resources",
-  "Anonymous Tip: Overbudget Concerns in Public Program",
+  "Overbudget Concerns in Public Program",
   "Alert: Inefficient Government Policies Leading to Waste",
   "Request for Audit: Departmental Waste in Key Projects",
   "Observation of Financial Mismanagement in Public Sector",
   "Recommendation to Investigate Questionable Government Expenditures",
   "Call for Action: Reducing Waste in Government Initiatives",
-  "Anonymous Submission: Observed Inefficiencies in Federal Spending",
+  "AObserved Inefficiencies in Federal Spending",
   "Reporting Red Flags in Departmental Budgets",
   "Suspected Waste in Government Procurement Process",
   "Action Needed: Mismanagement of Public Assets",
   "Reporting Oversight Gaps Leading to Inefficiency",
   "Request for Scrutiny: Public Funds Used Ineffectively",
   "Waste Report: Department Spending Raises Concerns",
-  "Insight: Streamlining Opportunities to Cut Waste in Government"
+  "Insight: Streamlining Opportunities to Cut Waste in Government",
 ];
 
 var emailGreetingsSyn = [
@@ -77,6 +77,21 @@ var emailGreetingsSyn = [
   "To the Heads of DOGE Department",
   "Greetings DOGE Administration",
   "Dear DOGE Leadership",
+];
+
+var reachingoutSyn = [
+  "reaching out",
+  "getting in touch with you",
+  "connecting with you",
+  "engaging with",
+  "touching base with you",
+  "approaching you",
+  "reaching out to your office",
+  "reaching out to this department",
+  "checking in with you",
+  "messaging",
+  "notifying",
+  "writing",
 ];
 
 var expressSyn = [
@@ -195,7 +210,7 @@ var corporationsSyn = [
   "Big Oil", // fossil fuel
   "Weapons manufacturers", // dod pentagon
   "billionaires", // coroprate handouts
-  "corporations", // prision
+  "corporations", // prison
 ];
 
 // I believe we must reduce government waste by eliminating departments with two heads (e.g. DOGE).
@@ -675,7 +690,7 @@ var bonfire = [
   "So this rap is child's play, I do my name like Princess Di",
   "Yeah, they say they want the realness, rap about my real life",
   'Told me I should just quit "first of all, you talk white!',
-  "Second off, you talk like you haven't given up yet\"",
+  "Second off, you talk like you haven't given up yet",
   "Rap's stepfather, yeah, you hate me but you will respect",
   "I put in work, ask Ludwig",
   "Put my soul on the track like shoes did",
@@ -690,7 +705,7 @@ var bonfire = [
   "Yeah, I'm in her ass like sodomy",
   "So if you see my hand under the table, don't bother me",
   "I don't talk soft, that's that other guy",
-  "I'm screamin' \"What the fuck is up?\" like I ain't seen the sky",
+  "I'm screamin' What the fuck is up? like I ain't seen the sky",
   "And shit I'm doin' this year, Insanity",
   "Made the beat then murdered it, Casey Anthony",
   "These rappers don't know what to do",
@@ -814,10 +829,9 @@ const songChoices = [
 ];
 const departmentToCorporation = {
   "Department of Defense": "weapons manufacturers",
-  // "Corporate Handouts": "billionaires and corporations", // TODO: SOFIA PPP DATA!
-  "Corrections Department": "corporations and the prision industrial complex", // TODO
+  "Corrections Department": "corporations and the prison industrial complex",
   "Energy Department": "Big Oil",
-  "Department of Government Efficiency": "inefficient bureaucracy", // Example placeholder
+  "Department of Government Efficiency": "inefficient bureaucracy", 
 };
 
 // Function to generate email with dynamic department
@@ -826,6 +840,7 @@ function generateRandomDOGEEmail(department) {
     subjectLinesSyn[Math.floor(Math.random() * subjectLinesSyn.length)];
   const greeting =
     emailGreetingsSyn[Math.floor(Math.random() * emailGreetingsSyn.length)];
+  const reachingOut = reachingoutSyn[Math.floor(Math.random() * reachingoutSyn.length)];
   const express = expressSyn[Math.floor(Math.random() * expressSyn.length)];
   const frustration =
     frustrationSyn[Math.floor(Math.random() * frustrationSyn.length)];
@@ -853,7 +868,7 @@ ${closing},`;
   } else {
     emailBody = `${greeting}, 
 
-I am reaching out to ${express} my ${frustration} with the government ${waste} in the ${department}. This particular department has been ${overspend} resources and ${cited} to be ${finalSongLyric}. My hard-earned tax dollars shouldn't be wasted by giving ${corporation} handouts.
+I am ${reachingOut} to ${express} my ${frustration} with the government ${waste} in the ${department}. This particular department has been ${overspend} resources and ${cited} to be ${finalSongLyric}. My hard-earned tax dollars shouldn't be wasted by giving ${corporation} handouts.
 
 ${closing},`;
   }
@@ -888,4 +903,3 @@ document.querySelector(".buttons").addEventListener("click", function (event) {
   }
   emailCount(button.id);
 });
-
